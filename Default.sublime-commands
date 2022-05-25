@@ -1,0 +1,12 @@
+[
+    {
+        "caption": "Path Copier: Override Map Path for This Window",
+        "command": "override_path_copier_map_file",
+        "args": {"clear":false}
+    },
+    {
+        "caption": "Path Copier: Clear Map Path Override for This Window",
+        "command": "override_path_copier_map_file",
+        "args": {"clear":true}
+    },
+]

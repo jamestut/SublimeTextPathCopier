@@ -1,0 +1,26 @@
+[
+	{
+		"caption": "Copy File Name",
+		"id": "side-bar-copy-file-name",
+		"command": "side_bar_copy_path",
+		"args": { "paths": [], "kind": "name" }
+	},
+	{
+		"caption": "Copy Relative Path",
+		"id": "side-bar-copy-relative-path",
+		"command": "side_bar_copy_path",
+		"args": { "paths": [], "kind": "relative" }
+	},
+	{
+		"caption": "Copy Absolute Path",
+		"id": "side-bar-copy-absolute-path",
+		"command": "side_bar_copy_path",
+		"args": { "paths": [], "kind": "absolute" }
+	},
+	{
+		"caption": "Copy Mapped Path",
+		"id": "side-bar-copy-mapped-path",
+		"command": "side_bar_copy_path",
+		"args": { "paths": [], "kind": "mapped" }
+	}
+]
