@@ -53,6 +53,10 @@ def _relative_path(window, path):
 		return path[len(prefix):]
 	return None
 
+def _absolute_path(window, path):
+	# assume supplied path is always absolute
+	return path
+
 def _mapped_path(window, path):
 	mapcontent = _inst.get_contents(window)
 	if not mapcontent:
@@ -84,15 +88,17 @@ def _process_path(window, path, kind):
 	elif kind == "relative":
 		return _relative_path(window, path)
 	elif kind == "absolute":
-		return path
+		return _absolute_path(window, path)
 	elif kind == "mapped":
 		return _mapped_path(window, path)
 	else:
 		return None
 
-def _copy_path(window, path, kind):
+def _copy_path(window, path, kind, lineno=None):
 	ret = _process_path(window, path, kind)
 	if ret:
+		if lineno:
+			ret = f"{ret}:{lineno}"
 		sublime.set_clipboard(ret)
 
 class SideBarCopyPath(sublime_plugin.WindowCommand):
@@ -118,6 +124,22 @@ class TabContextCopyPath(sublime_plugin.WindowCommand):
 
 	def _get_path(self, group, index):
 		return self.window.views_in_group(group)[index].file_name()
+
+class EditorContextCopyPath(sublime_plugin.TextCommand):
+	def run(self, edit, kind):
+		view = self.view
+		sel = view.sel()
+		# no selection at all = user should copy via tab/sidebar context instead
+		if not sel:
+			return False
+		# 'rowcol' is 0-based, but we want 1-based
+		lineno, _ = view.rowcol(sel[0].begin())
+		_copy_path(self.view.window(), self.view.file_name(), kind, lineno + 1)
+
+	def is_enabled(self, kind):
+		if not self.view.sel():
+			return False
+		return bool(_process_path(self.view.window(), self.view.file_name(), kind))
 
 class OverridePathCopierMapFile(sublime_plugin.WindowCommand):
 	def run(self, clear=False):

@@ -1,27 +1,31 @@
 [
-	{ "caption": "-", "id": "tab-context-pathcopier-copy-separator" },
 	{
-		"caption": "Copy File Name",
-		"id": "tab-context-copy-file-name",
-		"command": "tab_context_copy_path",
-		"args": { "group": -1, "index": -1, "kind": "name" }
-	},
-	{
-		"caption": "Copy Relative Path",
-		"id": "tab-context-copy-relative-path",
-		"command": "tab_context_copy_path",
-		"args": { "group": -1, "index": -1, "kind": "relative" }
-	},
-	{
-		"caption": "Copy Absolute Path",
-		"id": "tab-context-copy-absolute-path",
-		"command": "tab_context_copy_path",
-		"args": { "group": -1, "index": -1, "kind": "absolute" }
-	},
-	{
-		"caption": "Copy Mapped Path",
-		"id": "tab-context-copy-mapped-path",
-		"command": "tab_context_copy_path",
-		"args": { "group": -1, "index": -1, "kind": "mapped" }
+		"caption": "Copy Local Path",
+		"children": [
+			{
+				"caption": "Copy File Name",
+				"id": "tab-context-copy-file-name",
+				"command": "tab_context_copy_path",
+				"args": { "group": -1, "index": -1, "kind": "name" }
+			},
+			{
+				"caption": "Copy Relative Path",
+				"id": "tab-context-copy-relative-path",
+				"command": "tab_context_copy_path",
+				"args": { "group": -1, "index": -1, "kind": "relative" }
+			},
+			{
+				"caption": "Copy Absolute Path",
+				"id": "tab-context-copy-absolute-path",
+				"command": "tab_context_copy_path",
+				"args": { "group": -1, "index": -1, "kind": "absolute" }
+			},
+			{
+				"caption": "Copy Mapped Path",
+				"id": "tab-context-copy-mapped-path",
+				"command": "tab_context_copy_path",
+				"args": { "group": -1, "index": -1, "kind": "mapped" }
+			}
+		]
 	}
 ]

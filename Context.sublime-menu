@@ -1,0 +1,31 @@
+[
+	{
+		"caption": "Copy Local Path With Line",
+		"children": [
+			{
+				"caption": "Copy File Name",
+				"id": "pc-ectx-copy-file-name",
+				"command": "editor_context_copy_path",
+				"args": { "kind": "name" }
+			},
+			{
+				"caption": "Copy Relative Path",
+				"id": "pc-ectx-copy-relative-path",
+				"command": "editor_context_copy_path",
+				"args": { "kind": "relative" }
+			},
+			{
+				"caption": "Copy Absolute Path",
+				"id": "pc-ectx-copy-absolute-path",
+				"command": "editor_context_copy_path",
+				"args": { "kind": "absolute" }
+			},
+			{
+				"caption": "Copy Mapped Path",
+				"id": "pc-ectx-copy-mapped-path",
+				"command": "editor_context_copy_path",
+				"args": { "kind": "mapped" }
+			}
+		]
+	}
+]
