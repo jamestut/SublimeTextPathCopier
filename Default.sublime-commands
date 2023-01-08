@@ -9,4 +9,44 @@
         "command": "override_path_copier_map_file",
         "args": {"clear":true}
     },
+    {
+        "caption": "Path Copier: Copy File Name",
+        "command": "cmd_copy_path",
+        "args": { "lineno": false, "kind": "name" }
+    },
+    {
+        "caption": "Path Copier: Copy Relative Path",
+        "command": "cmd_copy_path",
+        "args": { "lineno": false, "kind": "relative" }
+    },
+    {
+        "caption": "Path Copier: Copy Absolute Path",
+        "command": "cmd_copy_path",
+        "args": { "lineno": false, "kind": "absolute" }
+    },
+    {
+        "caption": "Path Copier: Copy Mapped Path",
+        "command": "cmd_copy_path",
+        "args": { "lineno": false, "kind": "mapped" }
+    },
+    {
+        "caption": "Path Copier: Copy File Name With Line Number",
+        "command": "cmd_copy_path",
+        "args": { "lineno": true, "kind": "name" }
+    },
+    {
+        "caption": "Path Copier: Copy Relative Path With Line Number",
+        "command": "cmd_copy_path",
+        "args": { "lineno": true, "kind": "relative" }
+    },
+    {
+        "caption": "Path Copier: Copy Absolute Path With Line Number",
+        "command": "cmd_copy_path",
+        "args": { "lineno": true, "kind": "absolute" }
+    },
+    {
+        "caption": "Path Copier: Copy Mapped Path With Line Number",
+        "command": "cmd_copy_path",
+        "args": { "lineno": true, "kind": "mapped" }
+    }
 ]

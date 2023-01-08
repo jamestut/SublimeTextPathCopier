@@ -101,6 +101,12 @@ def _copy_path(window, path, kind, lineno=None):
 			ret = f"{ret}:{lineno}"
 		sublime.set_clipboard(ret)
 
+def _get_lineno(view):
+	if not view.sel():
+		return None
+	lineno = view.rowcol(view.sel()[0].begin())[0] + 1
+	return lineno
+
 class SideBarCopyPath(sublime_plugin.WindowCommand):
 	def run(self, paths, kind):
 		_copy_path(self.window, self._get_path(paths), kind)
@@ -140,6 +146,28 @@ class EditorContextCopyPath(sublime_plugin.TextCommand):
 		if not self.view.sel():
 			return False
 		return bool(_process_path(self.view.window(), self.view.file_name(), kind))
+
+class CmdCopyPath(sublime_plugin.WindowCommand):
+	def run(self, lineno, kind):
+		self._process(lineno, kind, False)
+
+	def is_visible(self, lineno, kind):
+		return self._process(lineno, kind, True)
+
+	def _process(self, lineno, kind, check_only):
+		view = self.window.active_view()
+		if not view:
+			return False
+		pth = _process_path(self.window, view.file_name(), kind)
+		if not pth:
+			return False
+		if lineno:
+			lineno = _get_lineno(view)
+			if not lineno:
+				return False
+		if not check_only:
+			_copy_path(self.window, pth, kind, lineno)
+		return True
 
 class OverridePathCopierMapFile(sublime_plugin.WindowCommand):
 	def run(self, clear=False):
